@@ -1,0 +1,24 @@
+<h2>Editing Book</h2>
+
+<% if @book.errors.any? %>
+<%= @book.errors.count %>prohibited this obj from being saved:
+<ul>
+    <% @book. errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+</ul>
+<% end %>
+
+
+<%= form_with model: @book, url: book_path(@book.id), method: :patch  do |book| %> 
+
+<p>Title</p>
+<%= book.text_field :title %>
+
+<p>Opinion</p>
+
+<%= book.text_area :body %>
+<% if @book.user == current_user %>
+<%= book.submit "Update Book" %>
+<% end %>
+<% end %>

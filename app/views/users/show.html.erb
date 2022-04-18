@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% if flash[:notice] %>
+<div class= "flash">
+    <%= flash[:notice] %>
+    <% end %>
+
+<h2>User info</h2>
+
+<div>
+<%= image_tag @user.get_profile_image(100,100) %>
+<p>name<%= @user.name %></p>
+<p>introduction<%= @user.introduction %></p>
+<%= link_to "Update User", edit_user_path(@user.id) %>
+</div>
+
+
+
+<%= render 'books/list', book: @book %>
+
+<h2>Books</h2>
+<% @books.each do |book| %>
+<div>
+<%= image_tag @user.get_profile_image(100,100) %>
+<%= link_to book.title, book_path(book.id) %>
+<%= book.body %>
+</div>
+<% end %>
+
+
