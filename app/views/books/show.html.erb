@@ -3,23 +3,35 @@
     <%= flash[:notice] %>
 <% end %>
 
-<div>
-<%= image_tag @book.user.get_profile_image(100,100) %>
-<p>name<%= @book.user.name %></p>
-<p>introduction<%= @book.user.introduction %></p>
-<%= link_to "Update User", edit_user_path(@book.user.id) %>
+<div class= "container px-5 px-sm-0">
+  <div class= "row">
+    <div class= "col-md-3">
+      <%= render 'users/profile', user: @user %>
+       <div class="row">
+        <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
+       </div>
+      <%= render 'list', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+     <h2>Book detail</h2>
+       <table class="table">
+        <tbody>
+          <tr>
+            <td>
+             <%= image_tag @book.user.get_profile_image(100,100) %><br>
+             <%= link_to @user.name, user_path(@user) %>
+            </tb>
+            <td><%= link_to @book.title %></td>
+            <td><%= @book.body %></td>
+            <td><% if @book.user == current_user %></td>
+            <td><%= link_to "Edit", edit_book_path(@book.id), class: "p-2 mb-1 bg-success text-white rounded" %></td>
+            <td><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "p-2 mb-1 bg-danger text-white rounded" %></td>
+              <% end %> 
+          </tr>
+        </tbody>
+       </table>
+    </div>
+  </div>
 </div>
-
-
-<%= render 'list', book: @book %>
-
-<h2>Book detail</h2>
-<div>
-<%= image_tag @book.user.get_profile_image(100,100) %>
-<%= link_to @user.name, user_path(@user) %>
-<%= link_to @book.title %>
-<%= @book.body %>
-<% if @book.user == current_user %>
-<%= link_to "Edit", edit_book_path(@book.id) %>
-<%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %> 
