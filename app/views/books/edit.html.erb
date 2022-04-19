@@ -1,24 +1,30 @@
-<h2>Editing Book</h2>
+<div class="container">
+  <div class="row">
+      <div class="mx-auto">
+   <h2>Editing Book</h2>
 
-<% if @book.errors.any? %>
-<%= @book.errors.count %>prohibited this obj from being saved:
-<ul>
-    <% @book. errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-</ul>
-<% end %>
+   <% if @book.errors.any? %>
+     <%= @book.errors.count %>prohibited this obj from being saved:
+    <ul>
+     <% @book. errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+    </ul>
+   <% end %>
 
 
-<%= form_with model: @book, url: book_path(@book.id), method: :patch  do |book| %> 
+     <%= form_with model: @book, url: book_path(@book.id), method: :patch  do |book| %> 
 
-<p>Title</p>
-<%= book.text_field :title %>
+   <p>Title</p>
+     <%= book.text_field :title %>
 
-<p>Opinion</p>
+   <p>Opinion</p>
 
-<%= book.text_area :body %>
-<% if @book.user == current_user %>
-<%= book.submit "Update Book" %>
-<% end %>
-<% end %>
+     <%= book.text_area :body %>
+     <% if @book.user == current_user %>
+     <%= book.submit "Update Book", class: "p-1 mb- bg-success text-white rounded" %>
+     <% end %>
+     <% end %>
+    </div>
+  </div>
+</div>

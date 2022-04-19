@@ -26,8 +26,8 @@
             <td><%= link_to @book.title %></td>
             <td><%= @book.body %></td>
             <td><% if @book.user == current_user %></td>
-            <td><%= link_to "Edit", edit_book_path(@book.id), class: "p-2 mb-1 bg-success text-white rounded" %></td>
-            <td><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "p-2 mb-1 bg-danger text-white rounded" %></td>
+            <td><%= link_to "Edit", edit_book_path(@book.id), class: "p-1 mb-0 bg-success text-white rounded" %></td>
+            <td><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "p-1 mb-0 bg-danger text-white rounded" %></td>
               <% end %> 
           </tr>
         </tbody>
