@@ -1,6 +1,9 @@
-<h1>Welcome to Bookers</h1>
 <% if flash[:notice] %>
 <div class= "flash">
     <%= flash[:notice] %>
     <% end %>
   </div>
+<h1>Welcome to Bookers</h1>
+
+  <%= link_to "Log in", new_user_session_path %><br>
+  <%= link_to "Sign up", new_user_registration_path %>

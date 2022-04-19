@@ -4,12 +4,24 @@
 <%= render 'books/list', book: @book %>
 
 <h2>Users</h2>
+<table>
+  <thead>
+    <tr>
+  <th><p>Image</p></th>
+  <th><p>Name</p></th>
+  <td colspan ="3"></td>
+  </tr>
+  </thead>
+
+  <tbody>
 <% @users.each do |user| %>
-<div>
-  <p>Image</p>
-  <%= image_tag user.get_profile_image(100,100) %>
-  <p>Name</p>
-  <%= user.name %>
-  <%= link_to "show", user_path(user.id) %>
-</div>
+<tr>
+
+  <td><%= image_tag user.get_profile_image(100,100) %></td>
+
+  <td><%= user.name %></tb>
+  <td><%= link_to "show", user_path(user.id) %></td>
+</tr>
 <% end %>
+ </tbody>
+</table>

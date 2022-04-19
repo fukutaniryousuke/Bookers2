@@ -16,6 +16,7 @@
 <h2>Book detail</h2>
 <div>
 <%= image_tag @book.user.get_profile_image(100,100) %>
+<%= link_to @user.name, user_path(@user) %>
 <%= link_to @book.title %>
 <%= @book.body %>
 <% if @book.user == current_user %>
