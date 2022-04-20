@@ -4,7 +4,7 @@
    <h2>Editing Book</h2>
 
    <% if @book.errors.any? %>
-     <%= @book.errors.count %>prohibited this obj from being saved:
+     <%= @book.errors.count %>error prohibited this obj from being:
     <ul>
      <% @book. errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -13,7 +13,7 @@
    <% end %>
 
 
-     <%= form_with model: @book, url: book_path(@book.id), method: :patch  do |book| %> 
+     <%= form_with model: @book, url: book_path(@book.id), method: :patch  do |book| %>
 
    <p>Title</p>
      <%= book.text_field :title %>
