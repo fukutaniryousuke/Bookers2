@@ -1,4 +1,8 @@
 <h2>User info</h2>
 <%= image_tag user.get_profile_image(100,100) %>
-<p>name<%= user.name %></p>
-<p>introduction<%= user.introduction %></p>
+<table class="table">
+<tr><th>name</th><td><%= user.name %></td></tr>
+<tr><th>introduction</th><td><%= user.introduction %></td></tr>
+<tr><th>follows</th><td><%= user.followings.count %></td></tr>
+<tr><th>followers</th><td><%= user.followers.count %></td></tr>
+</table>

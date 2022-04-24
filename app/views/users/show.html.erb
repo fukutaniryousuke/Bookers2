@@ -2,12 +2,17 @@
     <div class= "flash">
         <%= flash[:notice] %>
     <% end %>
-    
+
     <div class= "container px-5 px-sm-0">
       <div class= "row">
         <div class= "col-md-3">
           <%= render 'users/profile', user: @user %>
            <div class="row">
+             <% if current_user.following?(@user) %>
+             <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "p-1 mb-2 bg-info text-white rounded" %>
+           <% else %>
+             <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "p-1 mb-2 bg-success text-white rounded" %>
+           <% end %>
             <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
             <i class="fas fa-user-cog"></i>
             <% end %>
@@ -27,10 +32,10 @@
                   </td>
                  <td><%= link_to book.title, book_path(book.id) %></td>
                  <td><%= book.body %></td>
-                 
+
                  <td>
          　　         <% if book.favorited_by?(current_user) %>
-            
+
                      <%= link_to book_favorites_path(book), method: :delete do %>
                        ♥<%= book.favorites.count %>
                      <% end %>
