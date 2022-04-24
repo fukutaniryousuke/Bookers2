@@ -4,5 +4,5 @@
  <tr><th>name</th><td><%= user.name %></td></tr>
  <tr><th>introduction</th><td><%= user.introduction %></td></tr>
  <tr><th>follows</th><td><%= link_to user.followings.count, user_followings_path(user) %></td></tr>
- <tr><th>followers</th><td><%= user.followers.count %></td></tr>
+ <tr><th>followers</th><td><%= link_to user.followers.count, user_followers_path(user) %></td></tr>
 </table>
