@@ -1,0 +1,4 @@
+$(".comment-btn").html("<%= escape_javascript(render partial: 'book_comments/comment-btn', locals: {book: @book}) %>");
+
+$("textarea").html("<%= j(render 'book_comments/comment-btn', book: @book) %>");
+

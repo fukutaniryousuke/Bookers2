@@ -20,10 +20,12 @@
 
    <p>Opinion</p>
 
-     <%= book.text_area :body %>
-     <% if @book.user == current_user %>
-     <%= book.submit "Update Book", class: "p-1 mb- bg-success text-white rounded" %>
-     <% end %>
+          <%= book.text_area :body %>
+        <% if @book.user == current_user %><br>
+          <%= button_tag type: "submit", class: "btn btn-success" do %>
+          <i class="fas fa-pen"></i>Update Book
+          <% end %>
+        <% end %>
      <% end %>
      <%= link_to "Show", book_path(@book.id) %> |
      <%= link_to "Back", books_path %>

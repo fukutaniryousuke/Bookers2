@@ -28,44 +28,44 @@
           <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
       <li>
-       <%= link_to user_path(current_user.id), class: "text-light" do %>
-       <i class="fas fa-home"></i> Homes
+       <%= link_to user_path(current_user.id), class: "mr-2 text-light" do %>
+       <i class="fas fa-home"></i>Homes
        <% end %>
       </li>
       <li>
-        <%= link_to users_path, class: "text-light" do %>
-        <i class="fas fa-users"></i> Users
+        <%= link_to users_path, class: "mr-2 text-light" do %>
+        <i class="fas fa-users"></i>Users
         <% end %>
       </li>
       <li>
-        <%= link_to books_path, class: "text-light" do %>
-        <i class="fas fa-book-open"></i> Books
+        <%= link_to books_path, class: "mr-2 text-light" do %>
+        <i class="fas fa-book-open"></i>Books
         <% end %>
       </li>
       <li>
-        <%= link_to destroy_user_session_path, method: :delete, class: "text-light" do %>
-        <i class="fas fa-sign-out-alt"></i> Log out
+        <%= link_to destroy_user_session_path, method: :delete, class: "mr-2 text-light" do %>
+        <i class="fas fa-sign-out-alt"></i>Log out
         <% end %>
       </li>
       <% else %>
       <li>
-       <%= link_to root_path, class: "text-light" do %>
-       <i class="fas fa-home"></i> Homes
+       <%= link_to root_path, class: "mr-2 text-light" do %>
+       <i class="fas fa-home"></i>Homes
        <% end %>
       </li>
       <li>
-        <%= link_to about_path, class: "text-light" do %>
-        <i class="fas fa-link"></i> About
+        <%= link_to about_path, class: "mr-2 text-light" do %>
+        <i class="fas fa-link"></i>About
         <% end %>
       </li>
       <li>
-        <%= link_to new_user_registration_path, class: "text-light" do %>
-        <i class="fas fa-user-plus"></i> Sign up
+        <%= link_to new_user_registration_path, class: "mr-2 text-light" do %>
+        <i class="fas fa-user-plus"></i>Sign up
         <% end %>
       </li>
       <li>
-        <%= link_to new_user_session_path, class: "text-light" do %>
-        <i class="fas fa-sign-in-alt"></i> Log in
+        <%= link_to new_user_session_path, class: "mr-2 text-light" do %>
+        <i class="fas fa-sign-in-alt"></i>Log in
         <% end %>
       </li>
       <% end %>
@@ -74,13 +74,16 @@
       </nav>
       <div class="container">
         <div class="row">
-          <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+          <div class="col-3"></div>
+          <div class="mt-2 col-8 offset-1">
             <% if user_signed_in? %>
               <%= form_tag(search_path, method: :get) do %>
                 <%= text_field_tag 'content' %>
                 <%= select_tag 'model', options_for_select({ "User" => "user", "Book" => "book" }) %>
                 <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "前方一致" => "forcontent", "後方一致" => "backcontent", "部分一致" => "partial" }) %>
-                <%= submit_tag '検索', class: "bg-secondary text-white rounded" %>
+                <%= button_tag type: "submit", class: " bg-white text-primary" do %>
+                <i class="fas fa-search"></i>
+                <% end %>
               <% end %>
             <% end %>
           </div>

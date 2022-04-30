@@ -11,9 +11,9 @@
 
         <% if current_user != @user %>
           <% if current_user.following?(@user) %>
-              <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "p-1 mb-2 bg-info text-white rounded" %>
+              <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-outline-info" %>
           <% else %>
-              <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "p-1 mb-2 bg-success text-white rounded" %>
+              <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-outline-success" %>
           <% end %>
         <% end %>
 
@@ -33,12 +33,12 @@
             <td>
              <%= image_tag @book.user.get_profile_image(100,100) %><br>
              <%= link_to @user.name, user_path(@user) %>
-            </tb>
+            </td>
             <td><%= link_to @book.title %></td>
             <td><%= @book.body %></td>
             <td><% if @book.user == current_user %></td>
-            <td><%= link_to "Edit", edit_book_path(@book.id), class: "p-1 mb-0 bg-success text-white rounded" %></td>
-            <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "p-1 mb-0 bg-danger text-white rounded" %></td>
+            <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %></td>
+            <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
               <% end %>
 
             <td id="favorite_buttons_<%= @book.id %>">
@@ -50,14 +50,11 @@
           </tr>
         </tbody>
        </table>
-          <table>
-            <tbody>
-              
-              <%= render 'book_comments/comment-btn', book: @book %>
-
-            </tbody>
-          </table>
-          <div>
+       <h5>comment</h5>
+          <div class="comment-btn">
+          <%= render 'book_comments/comment-btn', book: @book, book_comment: @book_comment %>
+          </div>
+          <div class="comment-btn">
             <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
           </div>
     </div>
