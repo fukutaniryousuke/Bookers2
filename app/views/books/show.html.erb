@@ -45,16 +45,16 @@
                 <%= render 'favorites/favorite-btn', book: @book %>
             <td>
 
-            <td>コメント件数：<%= @book.book_comments.count %></td>
+            <td id="comment-count"><%= render "book_comments/comment_count", book: @book %></td>
 
           </tr>
         </tbody>
        </table>
        <h5>comment</h5>
-          <div class="comment-btn">
-          <%= render 'book_comments/comment-btn', book: @book, book_comment: @book_comment %>
+          <div id="comment-btn">
+            <%= render 'book_comments/comment-btn', book: @book, book_comment: @book_comment %>
           </div>
-          <div class="comment-btn">
+          <div id="comment-form">
             <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
           </div>
     </div>
